@@ -11,10 +11,14 @@ using namespace std;
 
 struct report {
   vector< int > levels;
+
   bool safe1() {
+    // Checking if the levels are sorted in either ascending or descenging order
     if (is_sorted(levels.begin(), levels.end()) ||
         is_sorted(levels.rbegin(), levels.rend())) {
       for (int i = 0; i < levels.size() - 1; i++) {
+        // Checking if there is a greater than 3 jump in levels or if there is
+        // no change between two levels
         if (abs(levels[i] - levels[i + 1]) > 3 ||
             abs(levels[i] - levels[i + 1]) == 0) {
           return false;
@@ -28,26 +32,15 @@ struct report {
   bool safe2() {
     for (int i = 0; i < levels.size(); i++) {
       report temp;
+      // Removing one level from the list at a time and checking if it is safe
+      // after
       copy(levels.begin(), levels.begin() + i, back_inserter(temp.levels));
       copy(levels.begin() + i + 1, levels.end(), back_inserter(temp.levels));
       if (temp.safe1()) {
-        temp.print();
-        cout << " \n\n";
-        print();
-        cout << "true" << endl;
         return true;
       }
     }
-    print();
-    cout << "false" << endl;
     return false;
-  }
-
-  void print() {
-    for (int i = 0; i < levels.size() - 1; i++) {
-      cout << levels[i] << ", ";
-    }
-    cout << levels[levels.size() - 1] << endl;
   }
 };
 

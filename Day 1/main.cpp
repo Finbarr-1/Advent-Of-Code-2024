@@ -12,6 +12,7 @@ int p1(vector< int > left, vector< int > right) {
   int output = 0;
 
   for (int i = 0; i < left.size(); i++) {
+    // adds the differnce between the sorted left side and sorted right side
     output += abs(left[i] - right[i]);
   }
 
@@ -28,6 +29,8 @@ int p2(vector< int > left, vector< int > right) {
         n++;
       }
     }
+    // adds the value of the left side multiplied by the amount of times it
+    // appears on the right side
     output += left[i] * n;
   }
 
