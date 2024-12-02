@@ -32,7 +32,7 @@ struct report {
       copy(levels.begin() + i + 1, levels.end(), back_inserter(temp.levels));
       if (temp.safe1()) {
         temp.print();
-        cd cout << " \n\n";
+        cout << " \n\n";
         print();
         cout << "true" << endl;
         return true;
