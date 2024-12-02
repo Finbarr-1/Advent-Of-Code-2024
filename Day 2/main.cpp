@@ -26,7 +26,7 @@ struct report {
   }
 
   bool safe2() {
-    for (int i = 0; i < levels.size() - 1; i++) {
+    for (int i = 0; i < levels.size(); i++) {
       report temp;
       copy(levels.begin(), levels.begin() + i, back_inserter(temp.levels));
       copy(levels.begin() + i + 1, levels.end(), back_inserter(temp.levels));
@@ -42,6 +42,7 @@ struct report {
     cout << "false" << endl;
     return false;
   }
+
   void print() {
     for (int i = 0; i < levels.size() - 1; i++) {
       cout << levels[i] << ", ";
