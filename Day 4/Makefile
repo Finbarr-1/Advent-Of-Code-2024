@@ -1,4 +1,4 @@
-CXX = g++ -g -O3
+CXX = g++ -g
 DEP_FLAGS = -MT $@ -MMD -MP -MF $(DEP_DIR)/$*.d
 EXE = run
 
