@@ -37,7 +37,7 @@ int p2() {
   string s;
   vector< pair< int, int > > results;
   int output = 0;
-  bool is_do = false;
+  bool is_do = true;
 
   while (getline(file, s)) {
     regex pattern("(do\\(\\)|don't\\(\\))|mul\\((\\d+),(\\d+)\\)");
@@ -45,10 +45,13 @@ int p2() {
     sregex_iterator end;
 
     for (auto it = begin; it != end; ++it) {
+      cout << it->str() << endl;
       std::smatch match = *it;
       if (match.str() == "do()") {
+        cout << "is do is true" << endl;
         is_do = true;
       } else if (match.str() == "don't()") {
+        cout << "is do is fasle" << endl;
         is_do = false;
       } else if (match[1].matched && match[2].matched) { // Matched `mul(x,y)`
         if (is_do) {
@@ -59,16 +62,13 @@ int p2() {
         }
       }
     }
-    for (auto &pair : results) {
-      output += pair.first * pair.second;
-    }
-    return output;
   }
 
   for (auto &pair : results) {
     cout << "x: " << pair.first << ", y: " << pair.second << endl;
     output += pair.first * pair.second;
   }
+  return output;
 }
 
 int main() { cout << "Part 1: " << p1() << endl << "Part 2: " << p2() << endl; }
