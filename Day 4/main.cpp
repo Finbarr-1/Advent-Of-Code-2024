@@ -93,5 +93,5 @@ int main() {
       }
     }
   }
-  cout << count << endl << p2;
+  cout << "Part 1: " << count << endl << "Part 2: " << p2;
 }
